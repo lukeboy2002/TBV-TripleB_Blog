@@ -33,23 +33,23 @@
             </nav>
         </section>
 
-{{--        <main class="lg:flex-grow px-2 sm:px-0">--}}
-{{--            <div class="md:grid md:grid-cols-12">--}}
-{{--                <div class="md:col-span-12">--}}
-{{--                    {{ $slot }}--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <!-- Sidebar start-->--}}
-{{--            <x-main-layout.mobilemenu />--}}
-{{--        </main>--}}
-
-        <div class="max-w-7xl mx-auto flex">
-            {{ $slot }}
+        <main class="lg:flex-grow px-2 sm:px-0">
+            <div class="md:grid md:grid-cols-12">
+                <div class="md:col-span-12">
+                    {{ $slot }}
+                </div>
+            </div>
 
             <!-- Sidebar start-->
             <x-main-layout.mobilemenu />
-        </div>
+        </main>
+
+{{--        <div class="max-w-7xl mx-auto flex">--}}
+{{--            {{ $slot }}--}}
+
+{{--            <!-- Sidebar start-->--}}
+{{--            <x-main-layout.mobilemenu />--}}
+{{--        </div>--}}
 
         <footer class="w-screen mx-auto flex justify-center">
             <x-main-layout.footer />
