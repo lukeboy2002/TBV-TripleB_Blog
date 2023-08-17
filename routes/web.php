@@ -30,6 +30,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:web', config('jetstrea
     })->name('settings');
 
     Route::resource('sponsors', \App\Http\Controllers\Admin\SponsorController::class)->except('show', 'destroy');
+    Route::get('slides', [\App\Http\Controllers\Admin\SlideController::class, 'index'])->name('slides.index');
+    Route::get('slides/create', [\App\Http\Controllers\Admin\SlideController::class, 'create'])->name('slides.create');
+    Route::get('slides/{slide}/edit', [\App\Http\Controllers\Admin\SlideController::class, 'edit'])->name('slides.edit');
 
     Route::post('filepondupload', [\App\Http\Controllers\Admin\FilepondController::class, 'upload'])->name('filepond.upload');
     Route::delete('filepondrevert', [\App\Http\Controllers\Admin\FilepondController::class, 'revert'])->name('filepond.revert');

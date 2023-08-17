@@ -22,9 +22,9 @@
             <x-link.btn-menu href="{{ route('admin.sponsors.index') }}" :active="request()->routeIs('admin.sponsors*')">
                 <i class="fa-solid fa-gift mr-2"></i>Sponsors
             </x-link.btn-menu>
-{{--            <x-link.btn-menu href="{{ route('admin.slides.index') }}" :active="request()->routeIs('admin.slides*')">--}}
-{{--                <i class="fa-solid fa-panorama mr-2"></i>Sliders--}}
-{{--            </x-link.btn-menu>--}}
+            <x-link.btn-menu href="{{ route('admin.slides.index') }}" :active="request()->routeIs('admin.slides*')">
+                <i class="fa-solid fa-panorama mr-2"></i>Sliders
+            </x-link.btn-menu>
 
 {{--            DROPDOWN MENU USERS--}}
 {{--            <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-700 dark:text-white transition duration-75 rounded-lg group hover:bg-orange-500" aria-controls="dropdown-user" data-collapse-toggle="dropdown-user">--}}
