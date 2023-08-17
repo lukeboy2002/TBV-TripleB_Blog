@@ -1,6 +1,6 @@
 <div>
     @if (!$sponsors->isEmpty())
-        <div class="overflow-x-auto relative shadow-md">
+        <div class="overflow-x-auto relative">
             <div class="flex justify-between items-center space-x-4 pb-4 pt-2 px-2">
                 <div class="flex items-center">
                     <label for="search" class="sr-only">Search</label>
