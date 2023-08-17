@@ -9,7 +9,10 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/**/*.js",
     ],
+
+    darkMode: 'class',
 
     theme: {
         extend: {
@@ -19,5 +22,10 @@ export default {
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [
+        forms,
+        typography,
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/container-queries'),
+    ],
 };
