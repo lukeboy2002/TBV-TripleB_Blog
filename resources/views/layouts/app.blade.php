@@ -44,13 +44,6 @@
             <x-main-layout.mobilemenu />
         </main>
 
-{{--        <div class="max-w-7xl mx-auto flex">--}}
-{{--            {{ $slot }}--}}
-
-{{--            <!-- Sidebar start-->--}}
-{{--            <x-main-layout.mobilemenu />--}}
-{{--        </div>--}}
-
         <footer class="w-screen mx-auto flex justify-center">
             <x-main-layout.footer />
         </footer>
