@@ -1,4 +1,4 @@
-<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+<ul role="list" class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
     <li>
         <x-main-layout.heading>Onze Sponsors</x-main-layout.heading>
     </li>
