@@ -9,7 +9,9 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        "./resources/**/*.blade.php",
         "./resources/**/*.js",
+        "./node_modules/flowbite/**/*.js"
     ],
 
     darkMode: 'class',
@@ -27,5 +29,6 @@ export default {
         typography,
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/container-queries'),
+        require('flowbite/plugin'),
     ],
 };
