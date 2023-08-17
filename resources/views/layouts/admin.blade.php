@@ -25,7 +25,6 @@
     <div class="min-h-screen flex flex-row">
         <div class="z-50">
             <x-messages />
-            <x-popups.banner />
         </div>
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto md:block flex-shrink-0 bg-white dark:bg-gray-800">
