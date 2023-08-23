@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->string('city')->nullable();
             $table->timestamp('birthday')->nullable();
-            $table->boolean('active')->nullable()->default(true);
             $table->integer('points')->nullable();
             $table->integer('played_games')->nullable();
             $table->integer('won_games')->nullable();

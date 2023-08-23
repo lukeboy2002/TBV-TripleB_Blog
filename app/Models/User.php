@@ -32,6 +32,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'email',
         'password',
+        'email_verified_at',
+        'logged_in',
+        'last_login_time',
+        'last_login_ip',
     ];
 
     /**
@@ -53,6 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login_time' => 'datetime',
     ];
 
     /**
@@ -64,8 +69,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function player(): HasOne
+    public function member(): HasOne
     {
         return $this->hasOne(Member::class);
+    }
+
+    public function getLastLoginTime()
+    {
+        return $this->last_login_time->format('d F Y - H:m:s');
     }
 }

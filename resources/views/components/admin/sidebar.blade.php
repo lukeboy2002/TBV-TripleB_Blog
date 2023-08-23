@@ -33,9 +33,9 @@
                 <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <ul id="dropdown-user" class="hidden py-2 space-y-2">
-{{--                <x-link.btn-menu href="{{ route('admin.members.index') }}" :active="request()->routeIs('admin.members.index')">--}}
-{{--                    <div class="pl-11">All Members</div>--}}
-{{--                </x-link.btn-menu>--}}
+                <x-link.btn-menu href="{{ route('admin.members.index') }}" :active="request()->routeIs('admin.members.index')">
+                    <div class="pl-11">All Members</div>
+                </x-link.btn-menu>
                 @if(current_user()->can('create:member'))
                 <li>
                     <x-link.btn-menu href="{{ route('admin.members.create') }}" :active="request()->routeIs('admin.members.create')">
