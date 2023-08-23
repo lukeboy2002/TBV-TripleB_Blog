@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
+use App\Models\Permission;
 use App\Models\Player;
 use App\Models\Role;
 use App\Models\User;
@@ -100,17 +101,39 @@ class Membercontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $member)
     {
-        //
+        $roles = Role::all();
+        $permissions = Permission::all();
+
+        return view('admin.members.edit', [
+            'member' => $member,
+            'roles' => $roles,
+            'permissions' => $permissions,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $member)
     {
-        //
+        $this->validate($request, [
+            'image' => ['required'],
+        ]);
+
+        if (str()->afterLast($request->input('image'), '/') !== str()->afterLast($member->member->image, '/')) {
+            Storage::disk('public')->delete($member->member->image);
+            $newFilename = Str::after($request->input('image'), 'tmp/');
+            Storage::disk('public')->move($request->input('image'), "members/$newFilename");
+        }
+
+        $member->member->update([
+            'image' => isset($newFilename) ? "members/$newFilename" : $member->image
+        ]);
+
+        $request->session()->flash('success', 'Member successfully updated.');
+        return redirect()->route('admin.members.index');
     }
 
     /**
@@ -124,5 +147,54 @@ class Membercontroller extends Controller
     public function trashed()
     {
         //
+    }
+
+    public function assignRole(Request $request, User $member)
+    {
+        if ($member->hasRole($request->role)) {
+            $request->session()->flash('error', 'Role already exists on permission.');
+            return back();
+        }
+
+        $member->assignRole($request->role);
+        $request->session()->flash('success', 'Role successfully added to permission.');
+        return back();
+    }
+
+    public function removeRole(Request $request, User $member, Role $role)
+    {
+        if ($member->hasRole($role)) {
+            $member->removeRole($role);
+
+            $request->session()->flash('success', 'Role successfully removed from member.');
+            return back();
+        }
+
+        $request->session()->flash('error', 'Role not exists.');
+        return back();
+    }
+
+    public function givePermission(Request $request, User $member)
+    {
+        if ($member->hasPermissionTo($request->permission)) {
+            $request->session()->flash('error', 'Permission already exists on member.');
+            return back();
+        }
+        $member->givePermissionTo($request->permission);
+
+        $request->session()->flash('success', 'Permission successfully added to member.');
+        return back();
+    }
+
+    public function revokePermission(Request $request, User $member, Permission $permission)
+    {
+        if ($member->hasPermissionTo($permission)) {
+            $member->revokePermissionTo($permission);
+
+            $request->session()->flash('success', 'Permission successfully removed from member.');
+            return back();
+        }
+        $request->session()->flash('error', 'Permission not exists.');
+        return back();
     }
 }

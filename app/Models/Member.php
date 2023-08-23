@@ -28,6 +28,11 @@ class Member extends Model implements HasMedia
         'updated_at',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

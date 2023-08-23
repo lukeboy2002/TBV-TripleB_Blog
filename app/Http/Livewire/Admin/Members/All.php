@@ -38,7 +38,7 @@ class All extends Component
     public function render()
     {
         return view('livewire.admin.members.all', [
-            'users' => User::role('member')
+            'members' => User::role('member')
                 ->orderby('logged_in', 'desc')
                 ->where(function ($query) {
                     $query->where('username', 'like', '%' . $this->search . '%')
@@ -61,9 +61,9 @@ class All extends Component
 
     public function delete()
     {
-        $user = User::find($this->deleteId);
+        $member = User::find($this->deleteId);
 
-        $user->delete();
+        $member->delete();
 
         $this->showModal = false;
 
