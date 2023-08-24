@@ -21,7 +21,7 @@
 </head>
 
 <body class="antialiased relative bg-white dark:bg-gray-800 max-w-full">
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-screen flex flex-col overflow-hidden">
         <div class="z-50">
             <x-messages />
         </div>
@@ -33,7 +33,7 @@
             </nav>
         </section>
 
-        <main class="lg:flex-grow px-2 sm:px-0">
+        <main class="lg:flex-grow">
             <div class="md:grid md:grid-cols-12">
                 <div class="md:col-span-12">
                     {{ $slot }}
