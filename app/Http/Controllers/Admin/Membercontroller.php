@@ -197,4 +197,28 @@ class Membercontroller extends Controller
         $request->session()->flash('error', 'Permission not exists.');
         return back();
     }
+
+    public function upload(Request $request)
+    {
+        try {
+            $member = new Member();
+            $member->id = 0;
+            $member->exists = true;
+            $image = $member->addMediaFromRequest('upload')->toMediaCollection('member');
+
+            return response()->json([
+                'uploaded' => true,
+                'url' => $image->getUrl('thumb')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'uploaded' => false,
+                    'error'    => [
+                        'message' => $e->getMessage()
+                    ]
+                ]
+            );
+        }
+    }
 }

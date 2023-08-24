@@ -55,6 +55,7 @@
             </div>
         @endif
 
+        @if(current_user()->hasRole('user'))
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-form.label for="username" value="{{ __('Username') }}" />
@@ -84,6 +85,7 @@
                 @endif
             @endif
         </div>
+        @endif
 
     </x-slot>
 

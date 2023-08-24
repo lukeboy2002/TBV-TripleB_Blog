@@ -9,7 +9,6 @@
     </x-slot>
 
     <x-slot name="form">
-
         <div class="col-span-6 sm:col-span-4">
             <div class="space-y-6">
                 <div wire:ignore>
@@ -68,7 +67,7 @@
             ClassicEditor
                 .create(document.querySelector('#bio'), {
                     ckfinder: {
-                        uploadUrl: '{{ route('admin.player.upload', ['_token' => csrf_token()]) }}'
+                        uploadUrl: '{{ route('admin.member.upload', ['_token' => csrf_token()]) }}'
                     }
                 })
                 .then(editor => {
