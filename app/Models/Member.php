@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -35,9 +36,14 @@ class Member extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
-    public function getRouteKeyName()
+//    public function getRouteKeyName()
+//    {
+//        return 'username';
+//    }
+
+    public function age()
     {
-        return 'username';
+        return Carbon::parse($this->attributes['birthday'])->age;
     }
 
     public function registerMediaConversions(Media $media = null): void
