@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('players', [\App\Http\Controllers\MemberController::class, 'index'])->name('members.index');
+Route::get('members', [\App\Http\Controllers\MemberController::class, 'index'])->name('members.index');
+Route::get('standings', [\App\Http\Controllers\MemberController::class, 'showstanding'])->name('members.standings');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', function () {

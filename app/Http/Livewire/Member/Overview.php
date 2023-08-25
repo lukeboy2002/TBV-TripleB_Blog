@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Member;
 
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class MembersOverview extends Component
+class Overview extends Component
 {
     use WithPagination;
 
@@ -16,7 +16,7 @@ class MembersOverview extends Component
             ->with('member')
             ->simplePaginate(1);
 
-        return view('livewire.members-overview', [
+        return view('livewire.member.overview', [
             'users'=>$users
         ]);
     }
