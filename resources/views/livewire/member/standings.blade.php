@@ -10,6 +10,9 @@
                 <th scope="col" class="px-6 py-3">
                     Username
                 </th>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
                 <th scope="col" class="px-6 py-3 text-center">
                     Won Games
                 </th>
@@ -29,6 +32,11 @@
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $member->user->username }}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        @if( $member->winner =='1' )
+                            <span class="bg-orange-500 text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Latest Winner</span>
+                        @endif
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $member->won_games }}

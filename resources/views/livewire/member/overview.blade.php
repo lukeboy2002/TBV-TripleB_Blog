@@ -11,7 +11,13 @@
                 </div>
                 <div class="ml-4 py-8 w-full space-y-4 sm:space-y-6 w-3/5">
                     <div>
-                        <p class="text-2xl font-black text-orange-500">{{ $user->username }}</p>
+                        <div class="flex items-center space-x-6 ">
+                            <p class="text-2xl font-black text-orange-500">{{ $user->username }}</p>
+                            @if( $user->member->winner =='1' )
+                                <span class="bg-orange-500 text-white text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Latest Winner</span>
+                            @endif
+                        </div>
+
                         <p class="text-gray-700 dark:text-white text-sm">{{ $user->member->city }}</p>
                     </div>
                     <div class="flex justify-start gap-4 w-full text-sm text-gray-700 dark:text-white">
