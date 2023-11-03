@@ -38,7 +38,8 @@ class All extends Component
     public function render()
     {
         return view('livewire.admin.members.all', [
-            'members' => User::role('member')
+            'members' => User::query()
+                ->leftJoin('model_has_roles as role', 'id', '=', 'role.model_id')
                 ->orderby('logged_in', 'desc')
                 ->where(function ($query) {
                     $query->where('username', 'like', '%' . $this->search . '%')

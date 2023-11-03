@@ -42,6 +42,16 @@
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                <button wire:click="sortBy('model_id')" class="uppercase">Role</button>
+                                <x-icons.sort-icon
+                                    field="model_id"
+                                    :sortField="$sortField"
+                                    :sortAsc="$sortAsc"
+                                />
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             logged in
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -56,13 +66,24 @@
                     @foreach($members as $member )
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="{{ asset('storage/' . $member->member->image) }}" alt="{{ $member->username }}" class="h-10 w-auto" >
+{{--                                <img src="{{ asset('storage/' . $member->member->image) }}" alt="{{ $member->username }}" class="h-10 w-auto" >--}}
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <a href="{{ route('admin.members.edit' , $member) }}">{{ $member->username }}</a>
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $member->email }}
+                            </th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                @if( $member->role_id =='1' )
+                                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">User</span>
+                                @endif
+                                @if( $member->role_id =='2' )
+                                    <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Admin</span>
+                                @endif
+                                @if( $member->role_id =='3' )
+                                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Member</span>
+                                @endif
                             </th>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 @if( $member->logged_in =='1' )

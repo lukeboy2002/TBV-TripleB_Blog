@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="grid grid-cols-1 sm:grid-cols-2 w-full">
         <div class="hidden sm:block">
             <img class="w-full h-full flex justify-center items-center object-cover" src={{asset('storage/backgrounds/register.jpeg')}} alt="" />
@@ -49,7 +48,6 @@
                     <div class="flex items-center justify-end">
                         <x-link.primary href="{{ route('login') }}">Already registered?</x-link.primary>
                     </div>
-
                     <x-button.primary class="px-5 py-2.5 text-sm font-medium w-full">Register</x-button.primary>
                 </form>
             </x-card.default>

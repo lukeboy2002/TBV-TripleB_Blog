@@ -48,8 +48,6 @@
                 Save
             </x-button.primary>
         </div>
-
-
     </x-slot>
 </x-section.form>
 
